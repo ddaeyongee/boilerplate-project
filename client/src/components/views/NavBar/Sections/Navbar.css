@@ -16,8 +16,8 @@
 .menu__logo a {
   display: inline-block;
   font-size: 23px;
-  padding: 25px 20px;
-  color: red;
+  padding: 7px 20px;
+  color: blue;
   /*background: orange;*/
 }
 

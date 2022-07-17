@@ -17,7 +17,7 @@ function NavBar() {
   };
 
   return (
-    <nav className="menu" style={{ position: "fixed", zIndex: 5, height: '90px', width: '100%' }}>
+    <nav className="menu" style={{ position: "fixed", zIndex: 5, height: '50px', width: '100%' }}>
       <div className="menu__logo">
         <a href="/">살랑프로젝트</a>
       </div>
