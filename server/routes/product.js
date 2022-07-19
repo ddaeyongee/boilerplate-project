@@ -56,7 +56,18 @@ router.post('/products', (req, res) => {
 
     for (let key in req.body.filters) {
         if (req.body.filters[key].length > 0) {
-            findArgs[key] = req.body.filters[key];
+            console.log('key', key)
+
+            if (key === "price") {
+                findArgs[key] = {
+                    // Greater than equal
+                    $gte: req.body.filters[key][0],
+                    // less than equal
+                    $lte: req.body.filters[key][1]
+                }
+            } else {
+                findArgs[key] = req.body.filters[key];
+            }
         }
     }
 
@@ -70,7 +81,6 @@ router.post('/products', (req, res) => {
         .limit(limit)
         .exec((err, productInfo) => {
             if (err) return res.status(400).json({success: false, err})
-
             return res.status(200).json({
                 success: true,
                 productInfo,
