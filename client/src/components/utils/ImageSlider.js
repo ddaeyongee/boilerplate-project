@@ -1,6 +1,5 @@
 import React from 'react'
 import {Carousel} from 'antd';
-import arrows from '@ant-design/react-slick';
 
 function ImageSlider(props) {
 
@@ -8,11 +7,6 @@ function ImageSlider(props) {
         <div>
             <Carousel
                 autoplay
-                leftArrowText={'＜'}
-                leftArrowStyle={{color: 'white', fontSize: 22, margin: 20}}
-                rightArrowText={'＞'}
-                rightArrowStyle={{color: 'white', fontSize: 22, margin: 20}}
-                arrows
             >
                 {props.images.map((image, index) => (
                     <div key={index}>
