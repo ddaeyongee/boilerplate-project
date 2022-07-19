@@ -37,6 +37,16 @@ const productSchema = mongoose.Schema({
     }
 }, {timestamp: true})
 
+//검색할 때, 인덱스를 주는 방법 mondgodb manual에서 가이드잘 나와 있다.
+productSchema.index({
+    title: 'text',
+    description: 'text'
+}, {
+    weights: {
+        title: 5,
+        description: 1
+    }
+})
 const Product = mongoose.model('Product', productSchema);
 
-module.exports = { Product }
+module.exports = {Product}

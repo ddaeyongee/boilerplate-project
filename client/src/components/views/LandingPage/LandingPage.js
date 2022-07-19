@@ -7,6 +7,7 @@ import Meta from 'antd/lib/card/Meta';
 import ImageSlider from '../../utils/ImageSlider';
 import CheckBox from "./Sections/CheckBox";
 import RadioBox from "./Sections/RadioBox";
+import SearchFeature from "./Sections/SearchFeature"
 import {continents, price} from "./Sections/Datas";
 
 function LandingPage() {
@@ -19,6 +20,7 @@ function LandingPage() {
         continents: [],
         price: []
     });
+    const [SearchTerm, setSearchTerm] = useState("");
 
     useEffect(() => {
         // let body 여기서 limit/skip 을 이용해서 8개만 가져온다.
@@ -92,8 +94,8 @@ function LandingPage() {
         const data = price;
         let array = [];
 
-        for (let key in data ) {
-            if(data[key]._id  === parseInt(value, 10)){
+        for (let key in data) {
+            if (data[key]._id === parseInt(value, 10)) {
                 array = data[key].array;
             }
         }
@@ -106,12 +108,26 @@ function LandingPage() {
 
         console.log('filters : ', filters)
 
-        if(category ==="price"){
+        if (category === "price") {
             let priceValues = handlePrice(filters)
             newFilters[category] = priceValues
         }
         showFilterResults(newFilters)
         setFilters(newFilters) // continent, price 둘다 set
+    }
+    
+    const updateSearchTerm = (newSearchTerm) => {
+
+        let body = {
+            skip: 0,
+            limit: Limit,
+            filters: Filters,
+            searchTerm: newSearchTerm
+        }
+
+        setSkip(0)
+        setSearchTerm(newSearchTerm)
+        getProducts(body)
     }
 
     return (
@@ -134,11 +150,15 @@ function LandingPage() {
                 </Col>
             </Row>
 
-
             {/* Search */}
+            <div style={{display: 'flex', justifyContent: 'flex-end', margin: '1rem auto'}}>
+                <SearchFeature
+                    refreshFunction = {updateSearchTerm}
+                />
+            </div>
+
 
             {/* Card */}
-
 
             <Row gutter={[16, 16]}>
                 {renderCards}
