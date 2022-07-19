@@ -49,12 +49,22 @@ router.post('/', (req, res) => {
 router.post('/products', (req, res) => {
 
     // skip, limit을 받는다.
-    let limit = req.body.limit ? parseInt(req.body.limit): 20;
-    let skip = req.body.skip ? parseInt(req.body.skip): 0;
+    let limit = req.body.limit ? parseInt(req.body.limit) : 20;
+    let skip = req.body.skip ? parseInt(req.body.skip) : 0;
+
+    let findArgs = {};
+
+    for (let key in req.body.filters) {
+        if (req.body.filters[key].length > 0) {
+            findArgs[key] = req.body.filters[key];
+        }
+    }
+
+    console.log('findArgs: ', findArgs)
 
     // Product collection 에 들어 있는 모든 상품 정보를 가져온다.
     // mongodb에 skip, limit을 알려준다.
-    Product.find()
+    Product.find(findArgs)
         .populate("writer")
         .skip(skip)
         .limit(limit)

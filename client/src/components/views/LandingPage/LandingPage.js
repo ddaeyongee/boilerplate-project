@@ -5,6 +5,9 @@ import {Col, Card, Row, Carousel} from 'antd';
 import Icon from '@ant-design/icons';
 import Meta from 'antd/lib/card/Meta';
 import ImageSlider from '../../utils/ImageSlider';
+import CheckBox from "./Sections/CheckBox";
+import RadioBox from "./Sections/RadioBox";
+import {continents, price} from "./Sections/Datas";
 
 function LandingPage() {
 
@@ -12,6 +15,10 @@ function LandingPage() {
     const [Skip, setSkip] = useState(0);
     const [Limit, setLimit] = useState(8); //landing page 상품 조회 최대 8개 까지
     const [PostSize, setPostSize] = useState(0);
+    const [Filters, setFilters] = useState({
+        continents: [],
+        price: []
+    });
 
     useEffect(() => {
         // let body 여기서 limit/skip 을 이용해서 8개만 가져온다.
@@ -70,6 +77,28 @@ function LandingPage() {
     })
 
 
+    const showFilterResults = (filters) => {
+        let body = {
+            skip: 0,
+            limit: Limit,
+            filters: filters
+        }
+
+        getProducts(body)
+        setSkip(0)
+
+
+    }
+
+    const handleFilters = (filters, category) => {
+        const newFilters = {...Filters}
+
+        newFilters[category] = filters
+
+        showFilterResults(newFilters)
+
+    }
+
     return (
         <div stype={{width: '75%', margin: '3rem auto'}}>
             <div style={{textAlign: 'center'}}>
@@ -78,6 +107,18 @@ function LandingPage() {
 
 
             {/* Filter */}
+
+            <Row gutter={[16, 16]}>
+                <Col lg={12} xs={24}>
+                    {/* CheckBox */}
+                    <CheckBox list={continents} handleFilters={filters => handleFilters(filters, "continents")}/>
+                </Col>
+                <Col lg={12} xs={24}>
+                    {/* RadioBox */}
+                    <RadioBox list={price} handleFilters={filters => handleFilters(filters, "price")}></RadioBox>
+                </Col>
+            </Row>
+
 
             {/* Search */}
 
