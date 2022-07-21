@@ -17,13 +17,11 @@ function ProductImage(props) {
             })
             setImages(images)
         }
-    }, []);
-
+    }, [props.detail]);
 
     return (
         <div>
             <ImageGallery items={Images}/>
-
         </div>
     )
 }

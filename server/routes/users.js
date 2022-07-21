@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const { User } = require("../models/User");
+const {User} = require("../models/User");
 
-const { auth } = require("../middleware/auth");
+const {auth} = require("../middleware/auth");
 
 //=================================
 //             User
@@ -26,7 +26,7 @@ router.post("/register", (req, res) => {
     const user = new User(req.body);
 
     user.save((err, doc) => {
-        if (err) return res.json({ success: false, err });
+        if (err) return res.json({success: false, err});
         return res.status(200).json({
             success: true
         });
@@ -34,7 +34,7 @@ router.post("/register", (req, res) => {
 });
 
 router.post("/login", (req, res) => {
-    User.findOne({ email: req.body.email }, (err, user) => {
+    User.findOne({email: req.body.email}, (err, user) => {
         if (!user)
             return res.json({
                 loginSuccess: false,
@@ -43,7 +43,7 @@ router.post("/login", (req, res) => {
 
         user.comparePassword(req.body.password, (err, isMatch) => {
             if (!isMatch)
-                return res.json({ loginSuccess: false, message: "Wrong password" });
+                return res.json({loginSuccess: false, message: "Wrong password"});
 
             user.generateToken((err, user) => {
                 if (err) return res.status(400).send(err);
@@ -60,12 +60,60 @@ router.post("/login", (req, res) => {
 });
 
 router.get("/logout", auth, (req, res) => {
-    User.findOneAndUpdate({ _id: req.user._id }, { token: "", tokenExp: "" }, (err, doc) => {
-        if (err) return res.json({ success: false, err });
+    User.findOneAndUpdate({_id: req.user._id}, {token: "", tokenExp: ""}, (err, doc) => {
+        if (err) return res.json({success: false, err});
         return res.status(200).send({
             success: true
         });
     });
+});
+
+router.post("/addToCart", auth, (req, res) => {
+
+    // 먼저 User Collection에 해당 유저의 정보를 가져 온다.
+    User.findOne({_id: req.user._id},
+        (err, userInfo) => {
+            // 가져온 정보에서 카트에 넣으려는 상품이 이미 들어 있는지 확인
+            let duplicate = false;
+            userInfo.cart.forEach((item) => {
+                if (item.i === req.body.productId) {
+                    duplicate = true;
+                }
+            })
+            // 상품이 이미 카트에 있을 때
+            if (duplicate) {
+                User.findOneAndUpdate(
+                    {_id: req.user._id, "cart.id": req.body.productId}, //조건을 두 개 준다
+                    {$inc: {"cart.$.quantity": 1}},
+                    {new: true},
+                    (err, userInfo) => {
+                        if (err) return res.status(400).json({success: false, err})
+                        res.status(200).send(userInfo.cart)
+                    }
+                )
+                // 상품이 카트에 없을 때
+            } else {
+                User.findOneAndUpdate(
+                    {_id: req.user._id},
+                    {
+                        $push: {
+                            cart: {
+                                id: req.body.productId,
+                                quantity: 1,
+                                date: Date.now()
+                            }
+                        }
+                    },
+                    {new: true},
+                    (err, userInfo) => {
+                        if(err) return res.status(400).json({success:false, err})
+                        res.status(200).send(userInfo.cart)
+                    }
+                )
+            }
+        })
+
+
 });
 
 module.exports = router;

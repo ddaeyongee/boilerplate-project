@@ -47,6 +47,7 @@ router.post('/', (req, res) => {
 })
 
 router.post('/products', (req, res) => {
+    const product = new Product(req.body)
 
     // skip, limit을 받는다.
     let limit = req.body.limit ? parseInt(req.body.limit) : 20;
@@ -84,6 +85,7 @@ router.post('/products', (req, res) => {
                 if (err) return res.status(400).json({success: false, err})
                 return res.status(200).json({
                     success: true,
+                    product,
                     productInfo,
                     postSize: productInfo.length
                 })
@@ -99,16 +101,15 @@ router.post('/products', (req, res) => {
                 if (err) return res.status(400).json({success: false, err})
                 return res.status(200).json({
                     success: true,
+                    product,
                     productInfo,
                     postSize: productInfo.length
                 })
             })
     }
-
 })
 
 router.get('/products_by_id', (req, res) => {
-
     let type = req.query.type
     let productId = req.query.id
 
@@ -119,8 +120,6 @@ router.get('/products_by_id', (req, res) => {
             if (err) return res.status(400).send(err)
             return res.status(200).send({success: true, product})
         })
-
 })
-
 
 module.exports = router;

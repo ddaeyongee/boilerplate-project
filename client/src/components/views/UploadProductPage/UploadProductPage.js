@@ -69,8 +69,6 @@ function UploadProductPage(props) {
                     alert(" 정보 업로드에 실패했습니다. ")
                 }
             })
-
-
     }
     return (
         <div style={{maxWidth: '700px', margin: '2rem auto'}}>
@@ -119,7 +117,6 @@ function UploadProductPage(props) {
                 <Button htmlType="submit">
                     올리기
                 </Button>
-
             </Form>
         </div>
     )
