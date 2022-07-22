@@ -35,6 +35,7 @@
     "supports-color": "^7.1.0"
   },
   "devDependencies": {
+    "@iconify/react": "^3.2.2",
     "nodemon": "^2.0.19"
   }
 }
