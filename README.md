@@ -11,3 +11,9 @@ boilerplate project 구현하기
 
 [상세정보 페이지]
 ![image](https://user-images.githubusercontent.com/84838484/180126763-eccdd496-64f6-40fb-b90b-7f052e7249e3.png)
+
+[장바구니 페이지]
+![image](https://user-images.githubusercontent.com/84838484/182024092-3188066c-85d7-42e6-a584-8c7ec8916900.png)
+
+[결제내역 페이지] - paypal 결제 승인 후 응답을 받아야해서 아직 history data 는 없음 
+![image](https://user-images.githubusercontent.com/84838484/182024131-64afd7a0-7421-49b2-bc88-2b373e287fd1.png)
