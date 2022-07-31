@@ -39,7 +39,7 @@ function RightMenu(props) {
                 </Menu.Item>
 
                 <Menu.Item key="cart" style={{paddingBottom: 3, paddingTop: 10}}>
-                    <Badge count={5}>
+                    <Badge count={user.userData&&user.userData.cart.length}>
                         <a href="/user/cart" class-name="head-example" style={{marginRight: -15, color: '#667777'}}>
                             {/*<Icon type="shopping-cart" />*/}
                             <Icon icon="ant-design:shopping-cart-outlined" style={{fontSize: 30, marginBottom: 3}}/>

@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react'
 import {Button, Descriptions} from 'antd';
 import {useDispatch} from 'react-redux';
 import {addToCart} from '../../../../_actions/user_actions';
-import axios from 'axios'
 
 function ProductInfo(props) {
 

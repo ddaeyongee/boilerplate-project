@@ -7,18 +7,21 @@ import {Row, Col} from 'antd';
 function DetailProductPage(props) {
 
     const productId = props.match.params.productId
-
     const [Product, setProduct] = useState({});
+
     useEffect(() => {
         axios.get(`/api/product/products_by_id?id=${productId}&type=single`)
             .then(response => {
-                if (response.data.success) {
-                    console.log('response.data: ', response.data)
-                    setProduct(response.data.product[0])
-                } else {
-                    alert(" 조회 실패 ")
-                }
+                // if (response.data.success) {
+                //     console.log('response.data: ', response.data)
+                //     setProduct(response.data.product[0])
+                // } else {
+                //     alert(" 조회 실패 ")
+                // }
+                console.log('response.data: ', response.data)
+                setProduct(response.data[0])
             })
+            .catch(err => alert(err))
     }, []);
 
     return (

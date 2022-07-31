@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const {Product} = require("../models/Product");
 const {User} = require("../models/User");
 
 const {auth} = require("../middleware/auth");
@@ -108,7 +109,7 @@ router.post("/addToCart", auth, (req, res) => {
                     },
                     {new: true},
                     (err, userInfo) => {
-                        if(err) return res.status(400).json({success:false, err})
+                        if (err) return res.status(400).json({success: false, err})
                         res.status(200).send(userInfo.cart)
                     }
                 )
@@ -117,5 +118,39 @@ router.post("/addToCart", auth, (req, res) => {
 
 
 });
+
+router.get('/removeFromCart', auth, (req, res) => {
+
+    //먼저 cart 안에 내가 지우려고 한 상품을 지워주기
+    User.findOneAndUpdate(
+        {_id: req.user._id},
+        {
+            "$pull":
+                {"cart": {"id": req.query.id}}
+        },
+        {new: true},
+        (err, userInfo) => {
+            let cart = userInfo.cart
+            let array = cart.map(item => {
+                return item.id
+            })
+
+            //product collection 에서 현재 남아있는 상품들의 정보를 가져오기
+
+            //id = 213123123,435345345,345345345 이거를
+            //productIds = ['213123123',435345345','345345345'] 이런식으로 바꿔주기
+            Product.find({_id: {$in: array}})
+                .populate('writer')
+                .exec((err, productInfo) => {
+                    return res.status(200).json({
+                        productInfo,
+                        cart
+                    })
+                })
+        }
+    )
+
+
+})
 
 module.exports = router;
