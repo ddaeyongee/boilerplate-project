@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Typography, Button, Form, Input} from 'antd';
+import {Button, Form, Input} from 'antd';
 import FileUpload from '../../utils/FileUpload';
 import axios from 'axios'
 
@@ -45,7 +45,7 @@ function UploadProductPage(props) {
     const submitHandler = (event) => {
         event.preventDefault();
 
-        if(!Title || !Description || !Price || !Continent || !Images ) {
+        if (!Title || !Description || !Price || !Continent || !Images) {
             return alert(" 모든 항목을 채워 주세요. ")
         }
 
@@ -61,7 +61,7 @@ function UploadProductPage(props) {
         //서버에 채운 값들을 request 로 보낸다.
         axios.post("/api/product/", body)
             .then(response => {
-                if(response.data.success){
+                if (response.data.success) {
                     alert(" 정보 업로드에 성공했습니다. ")
                     // 다 저장하고 랜딩페이지로 가도록
                     props.history.push('/')

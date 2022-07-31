@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react'
-import {FaCode} from "react-icons/fa";
 import axios from 'axios'
-import {Col, Card, Row, Carousel} from 'antd';
+import {Col, Card, Row} from 'antd';
 import Icon from '@ant-design/icons';
 import Meta from 'antd/lib/card/Meta';
 import ImageSlider from '../../utils/ImageSlider';

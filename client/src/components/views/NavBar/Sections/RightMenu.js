@@ -15,7 +15,7 @@ function RightMenu(props) {
             if (response.status === 200) {
                 props.history.push("/login");
             } else {
-                alert('Log Out Failed')
+                alert('로그아웃 실패')
             }
         });
     };
@@ -24,18 +24,23 @@ function RightMenu(props) {
         return (
             <Menu mode={props.mode}>
                 <Menu.Item key="mail">
-                    <a href="/login">SignIn</a>
+                    <a href="/login"> 로그인 </a>
                 </Menu.Item>
                 <Menu.Item key="app">
-                    <a href="/register">SignUp</a>
+                    <a href="/register"> 회원가입 </a>
                 </Menu.Item>
             </Menu>
         )
     } else {
         return (
             <Menu mode={props.mode}>
+
+                <Menu.Item key="history">
+                    <a href="/history"> 결제내역 </a>
+                </Menu.Item>
+
                 <Menu.Item key="upload">
-                    <a href="/product/upload">Upload</a>
+                    <a href="/product/upload"> 봉사등록 </a>
                 </Menu.Item>
 
                 <Menu.Item key="cart" style={{paddingBottom: 3, paddingTop: 10}}>
@@ -48,7 +53,7 @@ function RightMenu(props) {
                 </Menu.Item>
 
                 <Menu.Item key="logout">
-                    <a onClick={logoutHandler}>Logout</a>
+                    <a onClick={logoutHandler}> 로그아웃 </a>
                 </Menu.Item>
             </Menu>
         )
