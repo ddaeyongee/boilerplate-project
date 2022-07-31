@@ -87,8 +87,20 @@ function UploadProductPage(props) {
                 <Input onChange={titleChangeHandler} value={Title}/>
                 <br/>
                 <br/>
+                <label>주소</label>
+                <br/>
+                <br/>
+                <label>준비물</label>
+                {/*<Input onChange={titleChangeHandler} value={Title}/>*/}
+
+                <br/>
+                <br/>
+                <label>보호소 이름</label>
+                <Input onChange={titleChangeHandler} value={Title}/>
+                <br/>
+                <br/>
                 <label>설명</label>
-                <TextArea onChange={descriptionChangeHandler} value={Description}/>
+                <Input onChange={titleChangeHandler} value={Title}/>
                 <br/>
                 <br/>
                 <label>가격(원)</label>

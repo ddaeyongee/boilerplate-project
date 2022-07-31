@@ -32,6 +32,7 @@
     "react-dom": "^16.8.6",
     "react-dropzone": "^14.2.2",
     "react-native": "^0.69.3",
+    "react-native-web": "^0.18.7",
     "react-redux": "^5.0.7",
     "saslprep": "^1.0.3",
     "supports-color": "^7.1.0"

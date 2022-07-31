@@ -1,0 +1,12 @@
+{
+  "data" : [
+    {
+      "name": "temp_landing1",
+      "url": "http://localhost:5000/uploads/temp/temp_landing1.jpg"
+    },
+    {
+      "name": "temp_landing2",
+      "url": "http://localhost:5000/uploads/temp/temp_landing2.jpg"
+    }
+  ]
+}

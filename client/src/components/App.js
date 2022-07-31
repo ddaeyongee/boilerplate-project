@@ -2,7 +2,7 @@ import React, {Suspense} from 'react';
 import {Route, Switch} from "react-router-dom";
 import Auth from "../hoc/auth";
 // pages for this product
-import LandingPage from "./views/LandingPage/LandingPage.js";
+import VolunteerPage from "./views/VolunteerPage/VolunteerPage.js";
 import LoginPage from "./views/LoginPage/LoginPage.js";
 import RegisterPage from "./views/RegisterPage/RegisterPage.js";
 import NavBar from "./views/NavBar/NavBar";
@@ -11,6 +11,9 @@ import UploadProductPage from "./views/UploadProductPage/UploadProductPage";
 import DetailProductPage from "./views/DetailProductPage/DetailProductPage";
 import CartPage from "./views/CartPage/CartPage";
 import HistoryPage from "./views/HistoryPage/HistoryPage";
+import DonationPage from "./views/DonationPage/DonationPage";
+import AdoptPage from "./views/AdoptPage/AdoptPage";
+import LandingPage from "./views/LandingPage/LandingPage";
 
 //null   Anyone Can go inside
 //true   only logged in user can go inside
@@ -23,12 +26,15 @@ function App() {
             <div style={{paddingTop: '69px', minHeight: 'calc(100vh - 80px)'}}>
                 <Switch>
                     <Route exact path="/" component={Auth(LandingPage, null)}/>
+                    <Route exact path="/volunteer" component={Auth(VolunteerPage, null)}/>
                     <Route exact path="/login" component={Auth(LoginPage, false)}/>
                     <Route exact path="/register" component={Auth(RegisterPage, false)}/>
                     <Route exact path="/product/upload" component={Auth(UploadProductPage, true)}/>
                     <Route exact path="/product/:productId" component={Auth(DetailProductPage, null)}/>
                     <Route exact path="/user/cart" component={Auth(CartPage, true)}/>
                     <Route exact path="/history" component={Auth(HistoryPage, true)}/>
+                    <Route exact path="/donation" component={Auth(DonationPage, true)}/>
+                    <Route exact path="/adopt" component={Auth(AdoptPage, true)}/>
                 </Switch>
             </div>
             <Footer/>
