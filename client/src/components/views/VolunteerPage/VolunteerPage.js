@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import axios from 'axios'
 import {Col, Card, Row} from 'antd';
 import Icon from '@ant-design/icons';
-import { ArrowDownOutlined } from '@ant-design/icons';
+import {ArrowDownOutlined} from '@ant-design/icons';
 import Meta from 'antd/lib/card/Meta';
 import ImageSlider from '../../utils/ImageSlider';
 import CheckBox from "./Sections/CheckBox";
@@ -68,7 +68,7 @@ function VolunteerPage() {
             <Card
                 key={index}
                 // cover={<img style={{ width:'100%', maxHeight: '150px'}} src={`http://localhost:5000/${product.images[0]}`} alt="Card images"/>}
-                cover={<a href={`/product/${product._id}`} ><ImageSlider images={product.images}/></a>}
+                cover={<a href={`/product/${product._id}`}><ImageSlider images={product.images}/></a>}
             >
                 <Meta
                     title={product.title}
@@ -115,7 +115,7 @@ function VolunteerPage() {
         showFilterResults(newFilters)
         setFilters(newFilters) // continent, price 둘다 set
     }
-    
+
     const updateSearchTerm = (newSearchTerm) => {
 
         let body = {
@@ -131,15 +131,15 @@ function VolunteerPage() {
     }
 
     return (
-        <div stype={{width: '75%', margin: '3rem auto'}}>
+        <div style={{width: '85%', margin: '3rem auto'}}>
             <div style={{textAlign: 'center'}}>
                 <h2> 유기동물 보호소 </h2>
-                <ArrowDownOutlined />
-                <ArrowDownOutlined />
-                <ArrowDownOutlined />
+                <ArrowDownOutlined/>
+                <ArrowDownOutlined/>
+                <ArrowDownOutlined/>
             </div>
 
-            <br />
+            <br/>
 
             {/* Filter */}
 
@@ -157,7 +157,7 @@ function VolunteerPage() {
             {/* Search */}
             <div style={{display: 'flex', justifyContent: 'flex-end', margin: '1rem auto'}}>
                 <SearchFeature
-                    refreshFunction = {updateSearchTerm}
+                    refreshFunction={updateSearchTerm}
                 />
             </div>
 
