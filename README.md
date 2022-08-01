@@ -7,7 +7,7 @@ boilerplate project 구현하기
 ![image](https://user-images.githubusercontent.com/84838484/180126917-4b46f51a-06ef-4206-91f2-c36175f96461.png)
 
 [랜딩 페이지]
-![image](https://user-images.githubusercontent.com/84838484/180126616-fe5e8ec6-b824-4de7-9028-37557394543d.png)
+![image](https://user-images.githubusercontent.com/84838484/182033786-de456cee-36a7-4a97-b545-744cccb3c61d.png)
 
 [상세정보 페이지]
 ![image](https://user-images.githubusercontent.com/84838484/180126763-eccdd496-64f6-40fb-b90b-7f052e7249e3.png)
@@ -17,3 +17,10 @@ boilerplate project 구현하기
 
 [결제내역 페이지] - paypal 결제 승인 후 응답을 받아야해서 아직 history data 는 없음 
 ![image](https://user-images.githubusercontent.com/84838484/182024131-64afd7a0-7421-49b2-bc88-2b373e287fd1.png)
+
+[봉사하기 페이지]
+![image](https://user-images.githubusercontent.com/84838484/182033974-1aae0dc8-33cd-4ccb-9f10-31fe9959bc5a.png)
+
+[후원하기 페이지]
+
+[입양하기 페이지]
