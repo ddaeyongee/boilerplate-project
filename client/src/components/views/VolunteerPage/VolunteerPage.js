@@ -7,7 +7,7 @@ import Meta from 'antd/lib/card/Meta';
 import ImageSlider from '../../utils/ImageSlider';
 import CheckBox from "./Sections/CheckBox";
 import RadioBox from "./Sections/RadioBox";
-import SearchFeature from "./Sections/SearchFeature"
+import SearchFeature from "./Sections/SearchFeature";
 import {continents, price} from "./Sections/Datas";
 
 function VolunteerPage() {
@@ -67,7 +67,10 @@ function VolunteerPage() {
 
             <Card
                 key={index}
-                // cover={<img style={{ width:'100%', maxHeight: '150px'}} src={`http://localhost:5000/${product.images[0]}`} alt="Card images"/>}
+                // cover={
+                // <img style={{ width:'100%', maxHeight: '150px'}}
+                // src={`http://localhost:5000/${product.images[0]}`}
+                // alt="Card images"/>}
                 cover={<a href={`/product/${product._id}`}><ImageSlider images={product.images}/></a>}
             >
                 <Meta
@@ -164,7 +167,7 @@ function VolunteerPage() {
 
             {/* Card */}
 
-            <Row gutter={[16, 16]}>
+            <Row gutter={[16, 16]} lg={12} xs={24}>
                 {renderCards}
             </Row>
 

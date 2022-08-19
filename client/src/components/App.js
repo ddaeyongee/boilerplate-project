@@ -1,7 +1,6 @@
 import React, {Suspense} from 'react';
 import {Route, Switch} from "react-router-dom";
 import Auth from "../hoc/auth";
-// pages for this product
 import VolunteerPage from "./views/VolunteerPage/VolunteerPage";
 import LoginPage from "./views/LoginPage/LoginPage";
 import RegisterPage from "./views/RegisterPage/RegisterPage";
@@ -27,7 +26,7 @@ function App() {
                 <Switch>
                     <Route exact path="/" component={Auth(LandingPage, null)}/>
                     <Route exact path="/volunteer" component={Auth(VolunteerPage, null)}/>
-                    <Route exact path="/login" component={Auth(LoginPage, false)}/>
+                    <Route exact path="/login" component={Auth(LoginPage, null)}/>
                     <Route exact path="/register" component={Auth(RegisterPage, false)}/>
                     <Route exact path="/product/upload" component={Auth(UploadProductPage, true)}/>
                     <Route exact path="/product/:productId" component={Auth(DetailProductPage, null)}/>

@@ -13,12 +13,12 @@ function LandingPage() {
             </div>
             <br/>
             <div style={{maxWidth: '1000px', margin: '2rem auto'}}>
-                <img style={{width: '100%', height: '80%', alignContent: "center"}}
+                <img style={{width: '100%', height: '80%', alignContent: "center", opacity:"0.5"}}
                      src={`http://localhost:5000/uploads/temp/temp_landing1.jpg`}/>
+
             </div>
         </div>
     )
-
 }
 
 export default LandingPage

@@ -20,12 +20,12 @@ export const MenuItems = [
     //     cName: 'dropdown-link'
     // }
     {
-        title: '봉사지 등록하기',
+        title: '보호소 등록하기',
         path: '/product/upload',
         cName: 'dropdown-link'
     },
     {
-        title: '봉사활동하러가기',
+        title: '봉사활동 참여하기',
         path: '/volunteer',
         cName: 'dropdown-link'
     }
