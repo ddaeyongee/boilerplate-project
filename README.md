@@ -1,4 +1,10 @@
-boilerplate project 구현하기
+MERN to AWS 구현
+Mongodb
+Express
+React
+Node.js
+
+web page: https://luppyworld.com/
 
 [로그인 페이지]
 ![image](https://user-images.githubusercontent.com/84838484/180126876-c5660999-d81c-4af6-9a4b-9ca29470c8c3.png)
