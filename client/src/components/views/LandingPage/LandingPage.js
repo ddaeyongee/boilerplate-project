@@ -5,6 +5,9 @@ function LandingPage() {
 
     return (
         <div style={{width: '75%', margin: '3rem auto'}}>
+            <div id="banner" style={{textAlign: 'center'}}>
+                <img src="Images/banner1.png"/>
+            </div>
             <div style={{textAlign: 'center'}}>
                 <h2> 유기동물 봉사-입양 플랫폼 랜딩페이지 </h2>
                 <RocketFilled/>
@@ -13,7 +16,7 @@ function LandingPage() {
             </div>
             <br/>
             <div style={{maxWidth: '1000px', margin: '2rem auto'}}>
-                <img style={{width: '100%', height: '80%', alignContent: "center", opacity:"0.5"}}
+                <img style={{width: '100%', height: '80%', alignContent: "center", opacity: "0.5"}}
                      src={`http://localhost:5000/uploads/temp/temp_landing1.jpg`}/>
 
             </div>
